@@ -1,6 +1,15 @@
-.App {
-  text-align: center;
-
+* {
+  margin:0px ;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
-
-
+.body{
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+background: url(components/img/a.jpg) no-repeat; 
+background-size: cover;
+background-position: center;
+}
