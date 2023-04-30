@@ -1,6 +1,6 @@
 import React from 'react'
 import { FiUser, FiMail } from 'react-icons/fi'
-import { AiFillLock } from 'react-icons/ai'
+import { AiFillLock, AiOutlineClose } from 'react-icons/ai'
 import './Register.css'
 import { useNavigate } from 'react-router-dom'
 
@@ -10,6 +10,13 @@ const Register = () => {
   return (
     <div className='Register-form'>
       <div className='signIn'>
+        <div className='icon-close'>
+          <AiOutlineClose 
+          onClick ={ ()=> {
+            navigate('/')
+          }}
+          />
+        </div>
         <div className='top-heder'>
           <header>Registration</header>
         </div>

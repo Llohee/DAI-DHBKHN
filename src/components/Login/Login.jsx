@@ -1,5 +1,5 @@
 import React from 'react'
-import { AiFillLock } from 'react-icons/ai'
+import { AiFillLock, AiOutlineClose } from 'react-icons/ai'
 import { FiMail } from 'react-icons/fi'
 import './Login.css'
 import { useNavigate } from 'react-router-dom'
@@ -10,6 +10,13 @@ const Login = () => {
   return (
     <div className='Login-form'>
       <div className='signUp'>
+        <div className='icon-close'>
+          <AiOutlineClose
+            onClick={() => {
+              navigate('/')
+            }}
+          />
+        </div>
         <div className='top-heder'>
           {/* <span>Have an accoount?</span> */}
           <header>Login</header>
@@ -43,7 +50,7 @@ const Login = () => {
 
         <div className='login-register'>
           <p>Don't have an account? </p>
-          <a href='#' className='register-link'  onClick={() => { navigate('/register') }}> Register</a>
+          <a href='#' className='register-link' onClick={() => { navigate('/register') }}> Register</a>
         </div>
       </div>
     </div>
