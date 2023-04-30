@@ -2,8 +2,11 @@ import React from 'react'
 import { FiUser, FiMail } from 'react-icons/fi'
 import { AiFillLock } from 'react-icons/ai'
 import './Register.css'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
+  const navigate = useNavigate();
+
   return (
     <div className='Register-form'>
       <div className='signIn'>
@@ -42,7 +45,7 @@ const Register = () => {
         </div>
         <div className='login-register'>
           <p>Already have an account? </p>
-          <a href='#' className='login-link'> Login</a>
+          <a className='register-link' onClick={() => { navigate('/login') }}> Login</a>
         </div>
       </div>
     </div>

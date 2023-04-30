@@ -1,7 +1,10 @@
 import React from 'react'
 import './navbar.css'
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="main">
       <div className='list'>
@@ -9,7 +12,7 @@ const Navbar = () => {
         <div className='cx'><a href=''>About</a></div>
         <div className='cx'><a href=''>Services</a></div>
         <div className='cx'><a href=''>Contact</a></div>
-        <button className='btnLogin-popup' ><a href=''>Login</a></button>
+        <button className='btnLogin-popup' onClick={() => { navigate('/login') }}><a href=''>Login</a></button>
       </div>
     </div>
   )
