@@ -8,6 +8,7 @@ import LayoutAuth from './components/layout/auth'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './components/Login/Login'
 import Register from './components/Register/Register';
+import Home from './components/home/home';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -15,6 +16,8 @@ root.render(
     <Routes>
       <Route path='/' element={<MainLayout />} >
         <Route path='' element={<App />} />
+        <Route path='home' element={<Home />} />
+
       </Route>
       <Route path='/' element={<LayoutAuth />}>
         <Route path='login' element={<Login />} />
