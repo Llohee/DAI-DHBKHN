@@ -41,12 +41,12 @@ const Register = () => {
           />
           <input type='password' className='input' placeholder='Password' />
         </div>
-        <div className='bottom'>
+        {/* <div className='bottom'>
           <div className='left'>
             <input type='checkbox' id='check' />
             <label for='check'>I agree to the terms & condition</label>
           </div>
-        </div>
+        </div> */}
         <div className='input-field'>
           <input type='submit' className='submit' value='Register' />
         </div>

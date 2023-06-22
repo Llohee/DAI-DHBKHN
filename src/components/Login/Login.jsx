@@ -1,60 +1,103 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiFillLock, AiOutlineClose } from 'react-icons/ai'
 import { FiMail } from 'react-icons/fi'
 import './Login.css'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { Button, Form, Input } from 'antd'
 
 const Login = () => {
+  const [success, setSuccess] = useState(false);
+  const [goRegister, setGoRegister] = useState(false);
   const navigate = useNavigate();
+
+  const onFinish = async (values) => {
+    const { data } = await axios.post("http://localhost:4000/login", values);
+    if (data.token) {
+      localStorage.setItem("token", data.token);
+      setSuccess(true);
+    }
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
+  useEffect(() => {
+    if (!success) return;
+    setSuccess(false);
+    navigate("/");
+  }, [success]);
+
+  useEffect(() => {
+    if (!goRegister) return;
+    setGoRegister(false);
+    navigate("/register");
+  }, [goRegister]);
 
   return (
     <div className='Login-form'>
       <div className='signUp'>
-        <div className='icon-close'>
-          <AiOutlineClose
-            onClick={() => {
-              navigate('/')
-            }}
-          />
-        </div>
         <div className='top-heder'>
-          {/* <span>Have an accoount?</span> */}
           <header>Login</header>
         </div>
-        <div className='input-field'>
-          <FiMail
-            size={25}
-            color='#fff'
-          />
-          <input type='text' className='input' placeholder='Email' />
-        </div>
-        <div className='input-field'>
-          <AiFillLock
-            size={25}
-            color='#fff'
-          />
-          <input type='password' className='input' placeholder='Password' />
-        </div>
-        <div className='bottom'>
-          <div className='left'>
-            <input type='checkbox' id='check' />
-            <label for='check'>Remember Me</label>
+        <Form
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
+        >
+          <Form.Item
+            name="username"
+            // label="Username"
+            rules={[
+              {
+                required: true,
+                message: "Please input your username!",
+              }
+            ]}
+          >
+            <div className='input-field'>
+              <FiMail
+                size={25}
+                color='#fff'
+              />
+              <Input type='text'
+                className='input'
+                placeholder='Username'
+              />
+            </div>
+          </Form.Item>
+          <Form.Item
+            name="password"
+            // label="Password"
+            rules={[
+              {
+                required: true,
+                message: "Please input your password!",
+              }
+            ]}
+            >
+            <div className='input-field'>
+              <AiFillLock
+                size={25}
+                color='#fff'
+              />
+              <Input type='password'
+                className='input'
+                placeholder='Password'
+              />
+            </div>
+          </Form.Item>
+          <div className='input-field'>
+            <button value='Login' className='submit'  type="primary" htmlType="submit" >Login </button>
           </div>
-          <div className='right'>
-            <label><a href='#'>Forgot Password</a></label>
+          <div className='login-register'>
+            <p>Don't have an account? </p>
+            <a href='#' className='register-link' onClick={() => { setGoRegister(true) }}> Register</a>
           </div>
-        </div>
-        <div className='input-field'>
-          <input type='submit' className='submit' value='Login' />
-        </div>
-
-        <div className='login-register'>
-          <p>Don't have an account? </p>
-          <a href='#' className='register-link' onClick={() => { navigate('/register') }}> Register</a>
-        </div>
+        </Form>
       </div>
     </div>
   )
 }
-
 export default Login
