@@ -7,6 +7,7 @@ import axios from 'axios'
 import { Button, Form, Input } from 'antd'
 
 const Login = () => {
+  // const [usersuccess, setUsersuccess] = useState(false);
   const [success, setSuccess] = useState(false);
   const [goRegister, setGoRegister] = useState(false);
   const navigate = useNavigate();
@@ -15,13 +16,30 @@ const Login = () => {
     const { data } = await axios.post("http://localhost:4000/login", values);
     if (data.token) {
       localStorage.setItem("token", data.token);
-      setSuccess(true);
+      setSuccess(true)
     }
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+  // useEffect(() => {
+  //   const getUsers = async () => {
+  //     const { data } = await axios.get("http://localhost:4000/users", {
+  //       headers: {
+  //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //       },
+  //     })
+  //     if (success && data.role === 'admin') {
+  //       setSuccess(false) 
+  //       navigate("/admin");
+  //     }else{
+  //       setSuccess(false)
+  //       navigate("/");
+  //     }
+  //   }
+  //   getUsers(); 
+  // }, []);
 
   useEffect(() => {
     if (!success) return;
@@ -29,12 +47,12 @@ const Login = () => {
     navigate("/");
   }, [success]);
 
+
   useEffect(() => {
     if (!goRegister) return;
     setGoRegister(false);
     navigate("/register");
   }, [goRegister]);
-
   return (
     <div className='Login-form'>
       <div className='signUp'>
@@ -76,7 +94,7 @@ const Login = () => {
                 message: "Please input your password!",
               }
             ]}
-            >
+          >
             <div className='input-field'>
               <AiFillLock
                 size={25}
@@ -89,7 +107,7 @@ const Login = () => {
             </div>
           </Form.Item>
           <div className='input-field'>
-            <button value='Login' className='submit'  type="primary" htmlType="submit" >Login </button>
+            <button value='Login' className='submit' type="primary" htmlType="submit" >Login </button>
           </div>
           <div className='login-register'>
             <p>Don't have an account? </p>
