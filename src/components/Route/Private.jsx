@@ -10,9 +10,6 @@ const Private= (props) => {
   if (!userLoggedIn()) {
     return <Navigate to={"login"} replace />;
   }
-  // if (userLoggedIn.role === 'user') {
-  //   return <Navigate to={"/"} replace />;
-  // }
   return (
     <>
       <Outlet />

@@ -10,42 +10,38 @@ const Login = () => {
   // const [usersuccess, setUsersuccess] = useState(false);
   const [success, setSuccess] = useState(false);
   const [goRegister, setGoRegister] = useState(false);
+  const [datauser, setDatauser] = useState({});
+
+
   const navigate = useNavigate();
+
 
   const onFinish = async (values) => {
     const { data } = await axios.post("http://localhost:4000/login", values);
     if (data.token) {
       localStorage.setItem("token", data.token);
+      setDatauser(data.user)
       setSuccess(true)
     }
+    console.log(data.token)
   };
+  useEffect(()=> {
+    if(success && datauser.role[0] === 'admin') {
+      navigate("/admin")
+      setSuccess(false);
+    }if(success && datauser.role[0] === 'user'){
+      navigate("/")
+      setSuccess(false);
+    }
+  },[success, datauser])
+
+
+  console.log(datauser.role)
+  console.log(datauser)
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-  // useEffect(() => {
-  //   const getUsers = async () => {
-  //     const { data } = await axios.get("http://localhost:4000/users", {
-  //       headers: {
-  //         Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //       },
-  //     })
-  //     if (success && data.role === 'admin') {
-  //       setSuccess(false) 
-  //       navigate("/admin");
-  //     }else{
-  //       setSuccess(false)
-  //       navigate("/");
-  //     }
-  //   }
-  //   getUsers(); 
-  // }, []);
-
-  useEffect(() => {
-    if (!success) return;
-    setSuccess(false);
-    navigate("/");
-  }, [success]);
 
 
   useEffect(() => {
@@ -66,7 +62,6 @@ const Login = () => {
         >
           <Form.Item
             name="username"
-            // label="Username"
             rules={[
               {
                 required: true,
@@ -87,7 +82,6 @@ const Login = () => {
           </Form.Item>
           <Form.Item
             name="password"
-            // label="Password"
             rules={[
               {
                 required: true,
