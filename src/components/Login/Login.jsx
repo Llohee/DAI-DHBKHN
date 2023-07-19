@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { AiFillLock, AiOutlineClose } from 'react-icons/ai'
+import { AiFillLock } from 'react-icons/ai'
 import { FiMail } from 'react-icons/fi'
-import './Login.css'
 import { useNavigate } from 'react-router-dom'
+import {  Form, Input } from 'antd'
+import './Login.css'
+
 import axios from 'axios'
-import { Button, Form, Input } from 'antd'
 
 const Login = () => {
-  // const [usersuccess, setUsersuccess] = useState(false);
   const [success, setSuccess] = useState(false);
   const [goRegister, setGoRegister] = useState(false);
   const [datauser, setDatauser] = useState({});
-
-
   const navigate = useNavigate();
-
-
   const onFinish = async (values) => {
     const { data } = await axios.post("http://localhost:4000/login", values);
     if (data.token) {
@@ -34,21 +30,15 @@ const Login = () => {
       setSuccess(false);
     }
   },[success, datauser])
-
-
-  console.log(datauser.role)
-  console.log(datauser)
-
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-
-
   useEffect(() => {
     if (!goRegister) return;
     setGoRegister(false);
     navigate("/register");
   }, [goRegister]);
+
   return (
     <div className='Login-form'>
       <div className='signUp'>

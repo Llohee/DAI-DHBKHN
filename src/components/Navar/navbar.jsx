@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './navbar.css'
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { Button } from 'antd';
 
 const Navbar = () => {
   const [goLogout, setGoLogout] = useState(false);
-  const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
