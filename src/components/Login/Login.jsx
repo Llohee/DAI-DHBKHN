@@ -21,6 +21,7 @@ const Login = () => {
     }
     console.log(data.token)
   };
+  console.log(datauser)
   useEffect(()=> {
     if(success && datauser.role[0] === 'admin') {
       navigate("/admin")

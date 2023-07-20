@@ -40,27 +40,32 @@ const User = () => {
       },
     },
   ];
-  return 
-  <>
-    <div className='adminnavbar'>
-      <div className='right'>
-        <button className='navbar' onClick={()=> {
-          navigate('/')
-        }}>Giới Thiệu</button>
-        <button className='navbar'>Danh Mục</button>
-        <button className='navbar'>Người Dùng</button>
-        <button className='navbar'>Liên hệ</button>
+  return (
+    <div>
+      <div className='adminnavbar'>
+        <div className='right'>
+          <button className='navbar' onClick={() => {
+            navigate('/')
+          }}>Giới Thiệu</button>
+          <button className='navbar' >Danh Mục</button>
+          <button className='navbar'onClick={() => {
+            navigate('/admin/user')
+          }}>Người Dùng</button>
+          <button className='navbar'onClick={() => {
+            navigate('/admin/dashboard')
+          }}>Bảng Điều Khiển</button>
+        </div>
+        <div className="left">
+          <input type='search' classname="search" />
+          <button className="navbar" onClick={() => setGoLogout(true)}>Đăng Xuất</button>
+        </div>
       </div>
-      <div className="left">
-        <input type='search' />
-        <button className="navbar" onClick={() => setGoLogout(true)}>Đăng Xuất</button>
-      </div>
+      {/* <div className='table'>
+        <Table dataSource={dataSource} columns={columns} />;
+      </div> */}
     </div>
 
-    {/* <div className='table'>
-      <Table dataSource={dataSource} columns={columns} />;
-    </div> */}
-  </>
+  )
 };
 
 export default User;
