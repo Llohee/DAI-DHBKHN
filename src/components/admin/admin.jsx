@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import './admin.css'
+import Adminnavbar from "./adminnavbar/adminnavbar";
 
 const User = () => {
   const [dataSource, setDataSource] = useState([]);
@@ -42,24 +43,7 @@ const User = () => {
   ];
   return (
     <div>
-      <div className='adminnavbar'>
-        <div className='right'>
-          <button className='navbar' onClick={() => {
-            navigate('/')
-          }}>Giới Thiệu</button>
-          <button className='navbar' >Danh Mục</button>
-          <button className='navbar'onClick={() => {
-            navigate('/admin/user')
-          }}>Người Dùng</button>
-          <button className='navbar'onClick={() => {
-            navigate('/admin/dashboard')
-          }}>Bảng Điều Khiển</button>
-        </div>
-        <div className="left">
-          <input type='search' classname="search" />
-          <button className="navbar" onClick={() => setGoLogout(true)}>Đăng Xuất</button>
-        </div>
-      </div>
+      <Adminnavbar />
       {/* <div className='table'>
         <Table dataSource={dataSource} columns={columns} />;
       </div> */}

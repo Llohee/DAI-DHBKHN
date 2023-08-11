@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { FiUser, FiMail } from 'react-icons/fi'
-import { AiFillLock, AiOutlineClose } from 'react-icons/ai'
+import { AiFillLock, AiOutlineUser } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import './Register.css'
@@ -9,27 +8,23 @@ import { Form, Input } from 'antd'
 const Register = () => {
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
-
   const onFinish = async (values) => {
     await axios.post("http://localhost:4000/register", values);
     setSuccess(true);
   };
-
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-
   useEffect(() => {
     if (!success) return;
     setSuccess(false);
     navigate("/login");
   }, [success]);
-
   return (
     <div className='Register-form'>
       <div className='signIn'>
         <div className='top-heder'>
-          <header>Registration</header>
+        <div className='loginform-title'>Đăng Kí</div>
         </div>
         <Form
           onFinish={onFinish}
@@ -37,56 +32,45 @@ const Register = () => {
           autoComplete="off"
         >
           <Form.Item
-            // label="Username"
             name="username"
             rules={[
               {
                 required: true,
-                message: "Please input your username!",
+                message: "Hãy điền Tên đăng nhập!",
               },
             ]}
           >
             <div className='input-field'>
-              <FiUser
-                size={25}
+              <AiOutlineUser
+                size={30}
                 color='#fff'
               />
-              <Input type='text' className='input' placeholder='Username' />
+              <Input type='text' className='input' placeholder='Tên đăng nhập' />
             </div>
           </Form.Item>
-          {/* <Form.Item>
-          <div className='input-field'>
-            <FiMail
-              size={25}
-              color='#fff'
-            />
-            <input type='text' className='input' placeholder='Email' />
-          </div>
-          </Form.Item> */}
           <Form.Item
             name="password"
             rules={[
               {
                 required: true,
-                message: "Please input your password!",
+                message: "Hãy điền mật khẩu!",
               },
             ]}
           >
             <div className='input-field'>
               <AiFillLock
-                size={25}
+                size={30}
                 color='#fff'
               />
-              <Input type='password' className='input' placeholder='Password' />
+              <Input type='password' className='input' placeholder='Mật khẩu' />
             </div>
           </Form.Item>
           <Form.Item
-            // label="Confirm password"
             name="confirmPassword"
             rules={[
               {
                 required: true,
-                message: "Please retype your password!",
+                message: "Hãy điền lại mật khẩu!",
               },
               ({ getFieldValue }) => ({
                 validator(_, value) {
@@ -95,7 +79,7 @@ const Register = () => {
                   }
                   return Promise.reject(
                     new Error(
-                      "The two passwords that you entered do not match!"
+                      "Hai mật khẩu không trùng nhau! Hãy nhập lại"
                     )
                   );
                 },
@@ -104,26 +88,20 @@ const Register = () => {
           >
             <div className='input-field'>
               <AiFillLock
-                size={25}
+                size={30}
                 color='#fff'
               />
-              <Input type='password' className='input' placeholder='Confirm password' />
+              <Input type='password' className='input' placeholder='Nhập lại mật khẩu' />
             </div>
           </Form.Item>
           <div className='input-field'>
-            <button className="submit" type="primary" htmlType="submit">Register</button>
+            <button className="submit" type="primary" htmlType="submit">Đăng kí</button>
           </div>
           <div className='login-register'>
-            <p>Already have an account? </p>
-            <a className='register-link' onClick={() => { navigate('/login') }}> Login</a>
+            <p>Đẵ có tài khoản? </p>
+            <a className='register-link' onClick={() => { navigate('/login') }}>Đăng nhập</a>
           </div>
         </Form>
-        {/* <div className='bottom'>
-          <div className='left'>
-            <input type='checkbox' id='check' />
-            <label for='check'>I agree to the terms & condition</label>
-          </div>
-        </div> */}
       </div>
     </div>
   )

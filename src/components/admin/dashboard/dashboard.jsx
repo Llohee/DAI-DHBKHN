@@ -1,48 +1,51 @@
 import React from 'react'
-import {
-  CDBSidebar,
-  CDBSidebarContent,
-  CDBSidebarFooter,
-  CDBSidebarHeader,
-  CDBSidebarMenu,
-  CDBSidebarMenuItem,
-} from 'cdbreact';  
 import { useNavigate } from 'react-router-dom';
+import "./dashboard.css"
+import Adminnavbar from '../adminnavbar/adminnavbar';
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  
-  return (
-    <div className="sidebar-bar">
-    <CDBSidebar className="cd-sidebar" >
-      <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
-      </CDBSidebarHeader>
-      <CDBSidebarFooter className="cdsidebar-footer">
-        <div className="board-calender">
-          <button type="button" value='Boards' onClick={() => {
-            navigate('/home/boards');
-          }} > Board</button>
-          <button type="button" value='Calendar' onClick={() => {
-            navigate('/home/calendar');
-          }} >Calendar</button>
-          <button type="button" value='Calendar' onClick={() => {
-            navigate('/home/calendar');
-          }} >Calendar</button>
-          <button type="button" value='Calendar' onClick={() => {
-            navigate('/home/calendar');
-          }} >Calendar</button>
-          <button type="button" value='Calendar' onClick={() => {
-            navigate('/home/calendar');
-          }} >Calendar</button>
-          <button type="button" value='Calendar' onClick={() => {
-            navigate('/home/calendar');
-          }} >Calendar</button>
-        </div>
-      </CDBSidebarFooter>
 
-    </CDBSidebar>
-  </div>
-    )
+  return (
+    <>
+      <Adminnavbar />
+      <div className="sidebar">
+        <div className="title" onClick={() => {
+          navigate('/home/boards');
+        }}> Cài đặt chung</div>
+        <div className="title" onClick={() => {
+          navigate('/home/calendar');
+        }} >Danh sách người dùng</div>
+        <div className="title" onClick={() => {
+          navigate('/home/calendar');
+        }} >Thống kê tìm kiếm</div>
+        <div className="title" onClick={() => {
+          navigate('/home/calendar');
+        }} >Quản lý mô hình nhận dạng</div>
+        <div className="title" onClick={() => {
+          navigate('/home/calendar');
+        }} >Quản lý cây</div>
+        <div className="title" onClick={() => {
+          navigate('/home/calendar');
+        }} >Quản lý tổ ong </div>
+        <div className="title" onClick={() => {
+          navigate('/home/calendar');
+        }} >Danh sách bộ</div>
+        <div className="title" onClick={() => {
+          navigate('/home/calendar');
+        }} >Danh sách họ </div>
+        <div className="title" onClick={() => {
+          navigate('/home/calendar');
+        }} >Danh sách chi </div>
+        <div className="title" onClick={() => {
+          navigate('/home/calendar');
+        }} >Danh sách loài </div>
+        <div className="title" onClick={() => {
+          navigate('/home/calendar');
+        }} >Danh sách bộ phận cây </div>
+      </div>
+    </>
+  )
 }
 
 export default Dashboard

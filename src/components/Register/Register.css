@@ -9,7 +9,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 min-height: 100vh;
-background: url(../img/a.jpg) no-repeat; 
+background: linear-gradient(#26bd99,#08b083); 
 background-size: cover;
 background-position: center;
 }
@@ -25,7 +25,7 @@ background-position: center;
   position: relative;
   width: 400px;
   height: 440px;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.28);
   border: 2px solid rgba(255,255,255,1);
   border-radius: 20px;
   backdrop-filter: blur(20px);
