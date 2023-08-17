@@ -1,9 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import './dashboard.css'
+import '../dasboardsetting/dashboard.css'
 import Adminnavbar from '../../adminnavbar/adminnavbar';
 
-const Dashboard = () => {
+const DashboardSurface = () => {
   const navigate = useNavigate();
 
   return (
@@ -46,11 +46,11 @@ const Dashboard = () => {
           }} >Danh sách bộ phận cây </div>
         </div>
         <div className='content'>
-          <div>Giang</div>
+          <div>Giang7</div>
         </div>
       </div>
     </div>
   )
 }
 
-export default Dashboard
+export default DashboardSurface

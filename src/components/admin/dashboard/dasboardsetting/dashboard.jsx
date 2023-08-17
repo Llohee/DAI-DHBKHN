@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './dashboard.css'
 import Adminnavbar from '../../adminnavbar/adminnavbar';
 
-const Dashboard = () => {
+const DashboardSetting = () => {
   const navigate = useNavigate();
 
   return (
@@ -53,4 +53,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default DashboardSetting

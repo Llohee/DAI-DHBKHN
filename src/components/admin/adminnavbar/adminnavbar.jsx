@@ -10,7 +10,9 @@ const Adminnavbar = () => {
         <button className='navbar' onClick={() => {
           navigate('/')
         }}>Giới Thiệu</button>
-        <button className='navbar' >Danh Mục</button>
+        <button className='navbar' onClick={() => {
+          navigate('/admin/list')
+        }} >Danh Mục</button>
         <button className='navbar' onClick={() => {
           navigate('/admin/user')
         }}>Người Dùng</button>
