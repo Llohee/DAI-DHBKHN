@@ -15,7 +15,7 @@ const Adminnavbar = () => {
           navigate('/admin/user')
         }}>Người Dùng</button>
         <button className='navbar' onClick={() => {
-          navigate('/admin/dashboard')
+          navigate('/admin/dashboard/setting')
         }}>Bảng Điều Khiển</button>
       </div>
       <div className="left">
