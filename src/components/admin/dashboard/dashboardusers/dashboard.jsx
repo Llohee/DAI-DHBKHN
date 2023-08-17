@@ -1,11 +1,48 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import '../dasboardsetting/dashboard.css'
 import Adminnavbar from '../../adminnavbar/adminnavbar';
+import { Space, Table } from 'antd';
+import axios from 'axios';
 
 const DashboardUsers = () => {
   const navigate = useNavigate();
+  const [dataSource, setDataSource] = useState([]);
+  useEffect(() => {
+    const getUsers = async () => {
+      const { data } = await axios.get("http://localhost:4000/users", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      if (data) setDataSource(data);
+    };
 
+    getUsers();
+  }, []);
+  const columns = [
+    {
+      title: "Username",
+      dataIndex: "username",
+      key: "username",
+    },
+    {
+      title: "Roles",
+      dataIndex: "role",
+      key: "roles",
+      render: (data) => {
+        return JSON.stringify(data);
+      },
+    },{
+      title: "Delete",
+      render: (data) => (
+        <Space size="middle">
+          <a>Change role {data.username}</a>
+          <a>Delete</a>
+        </Space>
+      ),
+    }
+  ];
   return (
     <div>
       <Adminnavbar />
@@ -46,7 +83,7 @@ const DashboardUsers = () => {
           }} >Danh sách bộ phận cây </div>
         </div>
         <div className='content'>
-          <div>Giang9</div>
+          <Table dataSource={dataSource} columns={columns} className="table"/>
         </div>
       </div>
     </div>
