@@ -43,7 +43,6 @@ transition: .5s;
 .list .cx a:hover::after{
   transform-origin: left;
   transform: scaleX(1);
-
 }
 .list .btnLogin-popup {
   width: 90px;
@@ -67,6 +66,7 @@ transition: .5s;
 .btnLogin-popup a{
   text-decoration: none;
   color: #2f3640;
+  width: fit-content;
 }
 .list .btnLogin-popup:hover {
 background: #ffffff;

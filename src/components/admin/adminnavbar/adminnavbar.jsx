@@ -1,9 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./adminnavbar.css"
 import { useNavigate } from 'react-router-dom';
 const Adminnavbar = () => {
   const navigate = useNavigate();
   const [goLogout, setGoLogout] = useState(false);
+  useEffect(() => {
+    if (!goLogout) return;
+    setGoLogout(false);
+    navigate("/logout");
+  }, [goLogout]);
   return (
     <div className='adminnavbar'>
       <div className='right'>
@@ -21,8 +26,11 @@ const Adminnavbar = () => {
         }}>Bảng Điều Khiển</button>
       </div>
       <div className="left">
-        <input type='search' classname="search" />
-        <button className="navbar" onClick={() => setGoLogout(true)}>Đăng Xuất</button>
+        <div className="search">
+          <input type='search' classname="search" />
+          <button>Tìm Kiếm</button>
+        </div>
+        <button className="logout" onClick={() => setGoLogout(true)}>Đăng Xuất</button>
       </div>
     </div>
   )

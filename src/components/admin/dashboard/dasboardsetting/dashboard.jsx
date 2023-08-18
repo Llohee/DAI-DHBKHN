@@ -46,7 +46,18 @@ const DashboardSetting = () => {
           }} >Danh sách bộ phận cây </div>
         </div>
         <div className='content'>
-          <div>Giang</div>
+          <div className='caidatchung'>
+            <div className='noidung'>Cài đặt chung</div>
+            <div className='setting'>Tiêu đề Website</div>
+            <div className='form'>
+              <input type='text' className='form-setting' placeholder='Phần mềm nhận dạng và truy suất thông tin các loại thực vật' />
+            </div>
+            <div className='setting'>Tiêu đề trên thanh công cụ</div>
+            <div className='form'>
+              <input type='text' className='form-setting' placeholder='Traiongvuive' />
+            </div>
+            <div className='setting'>Thay đổi Logo</div>
+          </div>
         </div>
       </div>
     </div>

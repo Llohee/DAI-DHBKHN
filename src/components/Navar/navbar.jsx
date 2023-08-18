@@ -14,10 +14,10 @@ const Navbar = () => {
   return (
     <div className="main">
       <div className='list'>
-        <buton className='cx' onClick={() => { navigate('/home') }}><a href=''>Farmhouse</a></buton>
-        <button className='btnLogin-popup'
+        <buton className='btnLogin-popup' onClick={() => { navigate('/home') }}><a href=''>Farm</a></buton>
+        {/* <button className='btnLogin-popup'
           onClick={() => {navigate('/admin')}}
-        >Admin</button>
+        >Admin</button> */}
         <button className='btnLogin-popup' onClick={() => setGoLogout(true)}><a href=''>Logout</a></button>
       </div>
     </div>
