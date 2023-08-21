@@ -11,7 +11,9 @@ import img8 from '../../../img/img8.png'
 import img9 from '../../../img/img9.png'
 import img10 from '../../../img/img10.png'
 import "./List.css"
+import { useNavigate } from 'react-router-dom'
 const List = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <Adminnavbar />
@@ -58,8 +60,12 @@ const List = () => {
       </div>
       <div class="parent">
         <div class="div1">
-          <img src={img1} className='img' />
-          <div className='columntitle'>Peace Lily</div>
+          <button className='parentbutton' onClick={() => {
+            navigate('/admin/list/PeaceLily')
+          }} >
+            <img src={img1} className='img' />
+            <div className='columntitle'>Peace Lily</div>
+          </button>
         </div>
         <div class="div2">
           <img src={img2} className='img' />

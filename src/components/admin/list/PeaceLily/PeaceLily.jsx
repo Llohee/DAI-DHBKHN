@@ -1,25 +1,23 @@
 import React from 'react'
-import './home.css'
-import img1 from '../../img/img1.png'
-import img2 from '../../img/img2.png'
-import img3 from '../../img/img3.png'
-import img4 from '../../img/img4.png'
-import img5 from '../../img/img5.png'
-import img6 from '../../img/img6.png'
-import img7 from '../../img/img7.png'
-import img8 from '../../img/img8.png'
-import img9 from '../../img/img9.png'
-import img10 from '../../img/img10.png'
-import Navbar from '../Navar/navbar'
-const Home = () => {
+import Adminnavbar from '../../adminnavbar/adminnavbar'
+import img1 from '../../../../img/img1.png'
+import img2 from '../../../../img/img2.png'
+import img3 from '../../../../img/img3.png'
+import img4 from '../../../../img/img4.png'
+import img5 from '../../../../img/img5.png'
+import img6 from '../../../../img/img6.png'
+import img7 from '../../../../img/img7.png'
+import img8 from '../../../../img/img8.png'
+import img9 from '../../../../img/img9.png'
+import img10 from '../../../../img/img10.png'
+import "./PeaceLily.css"
+import { useNavigate } from 'react-router-dom'
+const PeaceLily = () => {
+  const navigate = useNavigate();
   return (
     <div>
-      {/* <Navbar /> */}
+      <Adminnavbar />
       <div className='listcontent'>
-        <div className='timkiem'>
-          <input type='tk' className='tk' />
-          <button>Tìm kiếm</button>
-        </div>
         <div className='pagetitle'>Danh mục các loài (181 Loài)</div>
         <div className='listbar'>
           <div className='listcheck'>
@@ -61,10 +59,30 @@ const Home = () => {
         </div>
       </div>
       <div class='homecontent'>
+        <div className='homeleft'>
+          <div>Giang</div>
+          <img src={img1} className='img' />
+          <div>Bộ</div>
+          <div>Bộ</div>
+          <div>Họ</div>
+          <div>Họ</div>
+          <div>Chi</div>
+          <div>Chi</div>
+          <div>Tên Khoa Học</div>
+          <div>Tên Khoa Học</div>
+          <div>
+            Đặc Điểm Hình Thái
+          </div>
+          <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet rem sequi nobis in, ullam cupiditate asperiores veritatis beatae numquam. Nam id placeat dolor nobis. Quos blanditiis doloribus velit voluptate perspiciatis.</div>
+        </div>
         <div class="parent">
           <div class="div1">
-            <img src={img1} className='img' />
-            <div className='columntitle'>Peace Lily</div>
+            <button className='parentbutton' onClick={() => {
+          navigate('/admin/list/PeaceLily')
+        }} >
+              <img src={img1} className='img' />
+              <div className='columntitle'>Peace Lily</div>
+            </button>
           </div>
           <div class="div2">
             <img src={img2} className='img' />
@@ -108,4 +126,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default PeaceLily

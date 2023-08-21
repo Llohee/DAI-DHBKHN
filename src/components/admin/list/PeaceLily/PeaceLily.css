@@ -32,7 +32,7 @@
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 50px;
-  margin-left: 50px;
+  /* margin: 50px 200px 0 200px; */
   }
   .parent div{
     text-align: center;
@@ -61,4 +61,18 @@
   border:none;
   background-color: white;
   cursor: pointer;
+}
+
+.homecontent{
+    display:flex;
+    margin: 20px;
+
+}
+.homeleft{
+    /* width:200px; */
+    height:fit-content;
+    /* background-color: aqua; */
+    padding:10px;
+    margin: 20px 0px 0 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
 }

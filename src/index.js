@@ -26,6 +26,8 @@ import DashboardFamily from './components/admin/dashboard/dasboardfamily/dashboa
 import DashboardGenus from './components/admin/dashboard/dasboardgenus/dashboard';
 import DashboardPlantparts from './components/admin/dashboard/dasboardplantparts/dashboard';
 import List from './components/admin/list/List';
+import ListRoute from './components/Route/ListRoute';
+import PeaceLily from './components/admin/list/PeaceLily/PeaceLily';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -50,7 +52,11 @@ root.render(
               <Route path='plantparts' element={<DashboardPlantparts />} />
             </Route>
             <Route path='user' element={<User />} />
-            <Route path='list' element={<List />} />
+            <Route path='list' element={<ListRoute />} >
+              <Route path='' element={<List />}/>
+              <Route path='PeaceLily' element={<PeaceLily />}/>
+
+            </Route>
           </Route>
           <Route path='logout' element={<Logout />} />
         </Route>
